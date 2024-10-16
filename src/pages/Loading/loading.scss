@@ -1,0 +1,16 @@
+@import '../../styles/mixin.scss';
+@import '../../styles/variables.scss';
+.loading {
+  padding: 2rem;
+  @include heightWidth100;
+  @include displayFlex;
+  gap: 2rem;
+  img {
+    height: 300px;
+    min-width: 300px;
+  }
+  .txt {
+    @include fontS24W800;
+    text-align: center;
+  }
+}

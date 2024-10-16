@@ -1,0 +1,147 @@
+@import '../../styles/mixin.scss';
+@import '../../styles/variables.scss';
+
+.dd {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding-bottom: 1rem;
+  }
+  
+  .dd-00 {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    label {
+      font-size: 12px;
+      font-weight: 350;
+      color: $placeholderGray;
+    }
+    .input-box-style,
+    .input-box-category {
+      box-shadow: $searchBoxShadow;
+      border-radius: 5px;
+      @include borderOutlineNone;
+      padding: 0.4rem;
+      min-height: 32px;
+      position: relative;
+      cursor: pointer;
+      .down-icon {
+        position: absolute;
+        right: 10px;
+        top: 5px;
+        color: $placeholderGray;
+      }
+      &:hover {
+        box-shadow: $searchBoxShadowHover;
+      }
+    }
+  }
+
+.h1 {
+    @include fontS16W700;
+  }
+
+  .dd-1 {
+    @extend .dd;
+    .dd-11 {
+      display: flex;
+      gap: 0.5rem;
+      label {
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .dd-2 {
+    @extend .dd;
+    .dd-21 {
+      @extend .dd-00;
+    }
+    @media screen and (max-width: 1150px) {
+      padding-bottom: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+  }
+
+  .dd-3 {
+    @extend .dd;
+    .dd-31 {
+      @extend .dd-00;
+      position: relative;
+      .options-wrapper {
+        position: absolute;
+        top: 4rem;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+        .options {
+          padding: 0.3rem 0.5rem;
+          font-size: 14px;
+          font-weight: 500;
+          border-radius: 7px;
+          color: $white;
+          background-color: $american-pink;
+          &:hover {
+            color: $brown;
+            background-color: $american-pink-1;
+            border: 1px solid $american-pink;
+            cursor: pointer;
+          }
+        }
+        @media screen and (max-width: 550px) {
+          top: 4.8rem;
+        }
+      }
+    }
+    @media screen and (max-width: 1150px) {
+      padding-bottom: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+  }
+
+  .dd-4 {
+    padding-bottom: 0.7rem;
+    .dd-41 {
+      @extend .dd-00;
+    }
+  }
+
+  .dd-5 {
+    padding-bottom: 3rem;
+    .label {
+      font-size: 12px;
+      font-weight: 350;
+      color: $placeholderGray;
+    }
+    .options {
+      margin-top: 0.3rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+      .dd-11 {
+        display: flex;
+        gap: 0.5rem;
+        label {
+          cursor: pointer;
+          color: black;
+          font-size: 13px;
+          padding-top: 3px;
+        }
+      }
+    }
+  }
+  .xmark-icon {
+    position: absolute;
+    top: 1.3rem;
+    right: 1.5rem;
+    cursor: pointer;
+  }

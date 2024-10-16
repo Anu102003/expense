@@ -1,0 +1,16 @@
+@import '../../styles/mixin.scss';
+@import '../../styles/variables.scss';
+
+.input-field {
+  @include displayFlex;
+  input {
+    margin: 0.8rem 0;
+    padding: 0.5rem 1rem;
+    @include borderOutlineNone;
+    border-radius: 15px;
+    min-width: 250px;
+  }
+  .error {
+    @include error;
+  }
+}

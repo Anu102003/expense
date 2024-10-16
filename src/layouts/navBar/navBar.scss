@@ -1,0 +1,73 @@
+@import '../../styles/mixin.scss';
+@import '../../styles/variables.scss';
+
+.nav-bar {
+  @include justifySpaceBetween;
+  padding: 4px 4rem 0 2rem;
+  .logo {
+    img {
+      height: 90px;
+      width: 100px;
+      cursor: pointer;
+    }
+  }
+  .btn-wrapper {
+    @include btn-wrapper;
+    flex-direction: row;
+    gap: 4rem;
+    .links-wrapper {
+      @include displayFlexRow;
+      gap: 5rem;
+      .link {
+        position: relative;
+        img {
+          height: 20px;
+          width: 20px;
+          position: absolute;
+          top: -20px;
+          right: 0;
+        }
+        p {
+          @include fontS18W700;
+          color: $white;
+          cursor: pointer;
+        }
+      }
+      @media screen and (max-width: 800px) {
+        gap: 3rem;
+      }
+    }
+    .btn {
+      @include displayFlexRow;
+      gap: 0.5rem;
+      @include btn-border;
+      border: 3px solid $white;
+      letter-spacing: 1px;
+    }
+    @media screen and (max-width: 600px) {
+      gap: 1.5rem;
+    }
+    @media screen and (max-width: 550px) {
+      display: none;
+    }
+  }
+  .more-icon-wrapper {
+    color: $white;
+    border: 2px solid $white;
+    padding: 8px;
+    border-radius: 10px;
+    cursor: pointer;
+    @media screen and (min-width: 550px) {
+      display: none;
+    }
+    @media screen and (max-width: 550px) {
+      display: block;
+    }
+  }
+  @media screen and (max-width: 800px) {
+    padding: 4px 1.5rem 0 1rem;
+  }
+  @media screen and (max-width: 550px) {
+    align-items: center;
+  }
+}

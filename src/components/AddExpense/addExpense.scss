@@ -1,0 +1,36 @@
+@import 'rsuite/dist/rsuite.css';
+@import '../../styles/mixin.scss';
+@import '../../styles/variables.scss';
+
+.add-expense-container {
+  width: 40%;
+  background-color: $white;
+  padding: 1.5rem 2rem;
+  cursor: auto;
+  position: relative;
+  overflow-y: scroll;
+
+  .dd-6 {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 1rem;
+    padding: 1rem 0;
+    .add {
+      @include btn-blue;
+    }
+    .cancel {
+      @include btn-blue;
+      color: $blue1;
+      background-color: $white;
+      border: 1px solid $blue1;
+    }
+  }
+  @media screen and (max-width: 1000px) {
+    width: 60%;
+  }
+  @media screen and (max-width: 500px) {
+    width: 90%;
+    padding-bottom: 0;
+  }
+}

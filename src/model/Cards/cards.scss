@@ -1,0 +1,40 @@
+@import '../../styles/mixin.scss';
+@import '../../styles/variables.scss';
+
+.card-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 2rem;
+  .card {
+    box-shadow: $cardBoxShadow;
+    @include displayFlex;
+    padding: 1rem;
+    background-color: $white;
+    border-radius: 10px;
+    .count {
+      padding: 2rem 0;
+      font-size: 26px;
+    }
+    .lable {
+      padding: 1rem 0;
+      color: $gray;
+      font-size: 16px;
+    }
+    @media screen and (max-width: 800px) {
+      padding: 0;
+    }
+    @media screen and (max-width: 700px) {
+      width: 40%;
+    }
+    @media screen and (max-width: 400px) {
+      width: 70%;
+    }
+  }
+  @media screen and (max-width: 700px) {
+    @include justifyCenter;
+    flex-wrap: wrap-reverse;
+  }
+  @media screen and (max-width: 400px) {
+    @include flexAlignCenter;
+  }
+}

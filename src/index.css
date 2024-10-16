@@ -1,0 +1,54 @@
+@import 'https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap';
+
+html,
+body,
+footer,
+header,
+nav,
+section,
+button,
+p {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: 'Nunito Sans', sans-serif;
+  letter-spacing: 0.5px;
+}
+
+
+body {
+  font-family: Arial, sans-serif;
+  color: '#000000';
+  overflow-x: hidden;
+}
+
+a {
+  color: '#000000';
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  text-align: center;
+}
+input {
+  cursor: pointer;
+  outline: 1px solid '#000000';
+  border: none;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}

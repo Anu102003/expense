@@ -1,0 +1,52 @@
+@import '../../styles/mixin.scss';
+@import '../../styles/variables.scss';
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  table {
+    width: 100%;
+    thead {
+      tr {
+        td {
+          @include fontS15W700;
+        }
+      }
+    }
+    thead,
+    tbody {
+      tr {
+        @media screen and (max-width: 590px) {
+          .time {
+            display: none;
+          }
+        }
+        td {
+          border-bottom: 1px solid $borderBottom;
+          padding: 1rem;
+          text-align: left;
+          font-size: 13px;
+
+          @media screen and (max-width: 470px) {
+            padding: 0.6rem;
+          }
+          @media screen and (max-width: 410px) {
+            font-size: 11px;
+            padding: 0.4rem;
+          }
+          @media screen and (max-width: 350px) {
+            font-size: 9px;
+            padding: 0.3rem;
+          }
+        }
+        .amount {
+          font-weight: 800;
+        }
+      }
+    }
+  }
+  .pagination {
+    padding: 1rem;
+    @include justifyCenter;
+  }
+}

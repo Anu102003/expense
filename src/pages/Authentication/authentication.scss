@@ -1,0 +1,69 @@
+@import '../../styles/mixin.scss';
+@import '../../styles/variables.scss';
+
+.authenticate {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 3rem 8rem;
+  background-color: $american-pink-2;
+  min-height: 100vh;
+  &__left {
+    @include displayFlex;
+    background-color: $american-pink;
+    img {
+      height: 350px;
+      margin-bottom: 4rem;
+    }
+    .p1 {
+      color: $white;
+      @include fontS16W700;
+    }
+    .btn-wrapper {
+      @include btn-wrapper;
+      .btn {
+        @include btn-border;
+      }
+    }
+  }
+  &__right {
+    @include flexAlignCenter;
+    justify-content: space-around;
+    background-color: $cream;
+    form {
+      @include flexAlignCenter;
+      padding: 0 2rem;
+      .h1 {
+        @include fontS32W900;
+        color: $gray;
+        padding: 1.5rem 0 1rem;
+      }
+      .error {
+        @include error;
+        text-align: center;
+        width: 350px;
+      }
+      .btn-wrapper {
+        @include btn-wrapper;
+        .btn {
+          @include btn;
+        }
+      }
+    }
+  }
+  @media only screen and (max-width: 1050px) {
+    @include displayFlex;
+    background-color: $cream;
+    min-height: auto;
+    &__right {
+      form {
+        padding: 0;
+        .error {
+          width: auto;
+        }
+      }
+    }
+    &__left {
+      display: none;
+    }
+  }
+}

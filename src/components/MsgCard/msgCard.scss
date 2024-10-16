@@ -1,0 +1,26 @@
+@import '../../styles/mixin.scss';
+@import '../../styles/variables.scss';
+
+.msg-card {
+  background-color: $white;
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  width: 20%;
+  min-width: max-content;
+  padding: 1rem;
+  border-radius: 5px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  .h-1 {
+    padding-bottom: 0.5rem;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+  .success {
+    color: $green;
+  }
+  .error {
+    color: $error;
+  }
+}

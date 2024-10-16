@@ -1,0 +1,5 @@
+export const REGISTER='/register'
+export const LOGIN='/login'
+export const DASHBOARD='/dashboard'
+export const TRANSACTION='/transaction'
+export const ERROR='/error'

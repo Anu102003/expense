@@ -1,0 +1,73 @@
+{
+  "AUTHENTICATION": {
+    "LOGIN": "Login",
+    "REGISTER": "Register",
+    "SIGN_IN": "Sign In",
+    "SIGN_UP": "Sign Up",
+    "NO_ACCOUNT": "Don't have an account ?",
+    "HAVE_ACCOUNT": "Already have an account ?"
+  },
+  "PLACEHOLDER": {
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "CONFIRM_PASSWORD": "Confirm Password",
+    "FIRST_NAME": "First Name",
+    "LAST_NAME": "Last Name",
+    "SEARCH": "Search by Category, Payment, Description",
+    "DATE": "Choose a Date",
+    "TIME": "Choose a Time",
+    "CATEGORY": "Select a Category",
+    "AMOUNT": "Enter a Amount",
+    "DESCRIPTION": "Description",
+    "PAYMENT_MODE": "Payment Mode"
+  },
+  "ERROR": {
+    "VALID": "Fill all the details",
+    "EMAIL": "Incorrect Email",
+    "REQUIRED": "This field is required",
+    "NAME": "Must start with a capital letter and cannot contain numbers or special characters",
+    "PASSWORD": "Password must include uppercase letter, lowercase letter, digit, and special character",
+    "PASSWORD_LENGTH": "Password must be have 8 characters",
+    "CONFIRM_PASSWORD": "Passwords must be the same"
+  },
+  "ALERT": {
+    "EMAIL": "Please enter a email",
+    "PASSWORD": "Please enter Password"
+  },
+  "ALT": {
+    "LOADING": "Loading",
+    "LOGO": "Logo",
+    "CURSOR": "Cursor"
+  },
+  "LOADING": {
+    "TEXT": "Hang On .."
+  },
+  "NAVBAR": {
+    "DASHBOARD": "Dashboard",
+    "LOGOUT": "Logout"
+  },
+  "LABEL": {
+    "TRANSACTION": "Transaction",
+    "INCOME": "Income",
+    "EXPENSE": "Expense",
+    "BALANCE": "Balance",
+    "ADD": "Add",
+    "FILTER": "Filter",
+    "TIME": "Time",
+    "CANCEL": "Cancel",
+    "SUCCESS": "Success",
+    "FAILED": "Failed",
+    "SUBMIT":"Submit"
+  },
+  "TABLE_LABEL": [
+    "Category",
+    "Date",
+    "Time",
+    "Payment Mode",
+    "Description",
+    "Amount"
+  ],
+  "MESSAGE":{
+    "ADD":""
+  }
+}

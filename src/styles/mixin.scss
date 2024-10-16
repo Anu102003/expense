@@ -1,0 +1,102 @@
+@import '../styles/variables.scss';
+
+// alignment
+@mixin displayFlex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+@mixin displayFlexRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@mixin flexAlignCenter {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+@mixin AlignCenter {
+  display: flex;
+  align-items: center;
+}
+
+@mixin justifyCenter {
+  display: flex;
+  justify-content: center;
+}
+@mixin justifySpaceBetween {
+  display: flex;
+  justify-content: space-between;
+}
+// font
+@mixin fontS15W700 {
+  font-size: 15px;
+  font-weight: 700;
+}
+@mixin fontS16W700 {
+  font-size: 16px;
+  font-weight: 700;
+}
+@mixin fontS18W700 {
+  font-size: 18px;
+  font-weight: 700;
+}
+@mixin fontS24W800 {
+  font-size: 24px;
+  font-weight: 800;
+}
+@mixin fontS32W900 {
+  font-size: 32px;
+  font-weight: 900;
+}
+@mixin error {
+  color: $error;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+// button
+@mixin btn-wrapper {
+  @include displayFlex;
+  padding: 1.5rem 0;
+}
+@mixin btn {
+  background-color: $american-pink;
+  @include fontS15W700;
+  padding: 0.7rem 1rem;
+  border-radius: 10rem;
+  color: $white;
+  &:hover {
+    background-color: $american-pink-3;
+    color: $brown;
+  }
+}
+@mixin btn-border {
+  @include btn;
+  border: 1px solid $white;
+}
+
+@mixin btn-blue() {
+  background-color: $blue1;
+  @include fontS15W700;
+  padding: 0.4rem 0.7rem;
+  border-radius: 10px;
+  color: $white;
+  &:hover {
+    background-color: $blue2;
+    color: $white;
+  }
+}
+
+//others
+@mixin borderOutlineNone {
+  border: none;
+  outline: none;
+}
+
+@mixin heightWidth100 {
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,32 @@
+@import '../../styles/mixin.scss';
+@import '../../styles/variables.scss';
+.nav-bar-container {
+  position: relative;
+  @include heightWidth100;
+  .nav-bar-wrapper {
+    background-color: $american-pink;
+  }
+  .outlet {
+    background-color: $american-pink-1;
+  }
+  .hide-navbar {
+    padding: 0.3rem 0;
+    background-color: $american-pink-1;
+    p {
+      color: $brown;
+      @include fontS15W700;
+      border: 3px solid $american-pink;
+      padding: 9px;
+      margin: 12px 10px;
+      border-radius: 15px;
+      &:hover {
+        background-color: $american-pink;
+        color: $white;
+        cursor: pointer;
+      }
+    }
+    @media screen and (min-width: 550px) {
+      display: none;
+    }
+  }
+}
