@@ -1,13 +1,19 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { api } from './apiHeader';
-
+interface DashboardPayload {
+  startDate: string;
+  endDate: string;
+}
 export const dashboardApi = createAsyncThunk<
   string,
-  void,
+  DashboardPayload,
   { rejectValue: string }
->('dashboard', async (_, { rejectWithValue }) => {
+>('dashboard', async ({ startDate, endDate }, { rejectWithValue }) => {
   try {
-    const response = await api.get('/dashboard');
+    console.log(startDate, endDate);
+    const response = await api.get('/dashboard/index', {
+      params: { date_from: startDate, date_to: endDate },
+    });
     return response?.data?.data;
   } catch (error) {
     return rejectWithValue('Dashboard failed');

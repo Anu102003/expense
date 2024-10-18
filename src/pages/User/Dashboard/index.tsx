@@ -15,43 +15,48 @@ const Dashboard = () => {
   const dispatch = useDispatch<AppDispatch>();
   const [showLoading, setShowLoading] = useState(false);
   const [dashboardData, setDashboardData] = useState<any>(null);
-  const [selectedDateRange, setSelectedDateRange] = useState<DateRange | null>(null);
-  
-  
+  const [selectedDateRange, setSelectedDateRange] = useState<DateRange | null>(
+    null
+  );
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+
+  const fetchDashboard = async () => {
+    setShowLoading(true);
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const resultAction = await dispatch(dashboardApi({ startDate, endDate }));
+      if (dashboardApi.fulfilled.match(resultAction)) {
+        setDashboardData(resultAction.payload);
+      } else if (dashboardApi.rejected.match(resultAction)) {
+        console.error('Failed to fetch dashboard data:', resultAction.payload);
+      }
+    } catch (error) {
+      console.error('Unexpected dashboard error', error);
+    } finally {
+      setShowLoading(false);
+    }
+  };
+
   const handleDateRangeChange = (value: DateRange | null) => {
     setSelectedDateRange(value);
     if (value && value.length === 2) {
-      const [startDate, endDate] = value;
-      const formattedStartDate = formatDateToAPI(startDate);
-      const formattedEndDate = formatDateToAPI(endDate);
-  
-      console.log( formattedStartDate); 
-      console.log( formattedEndDate);
+      const [s, e] = value;
+      setStartDate(formatDateToAPI(s));
+      setEndDate(formatDateToAPI(e));
+      fetchDashboard();
+    }
   };
-}
+  const handleClearDate = () => {
+    fetchDashboard();
+    setStartDate('');
+    setEndDate('');
+  };
 
   useEffect(() => {
-    const fetchDashboard = async () => {
-      setShowLoading(true);
-      try {
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-        const resultAction = await dispatch(dashboardApi());
-        if (dashboardApi.fulfilled.match(resultAction)) {
-          setDashboardData(resultAction.payload);
-        } else if (dashboardApi.rejected.match(resultAction)) {
-          console.error(
-            'Failed to fetch dashboard data:',
-            resultAction.payload
-          );
-        }
-      } catch (error) {
-        console.error('Unexpected dashboard error', error);
-      } finally {
-        setShowLoading(false);
-      }
-    };
     fetchDashboard();
-  }, [dispatch]);
+  }, [dispatch, startDate, endDate]);
+
   const memoDashboardData = useMemo(() => dashboardData, [dashboardData]);
 
   if (loading || showLoading) {
@@ -63,11 +68,13 @@ const Dashboard = () => {
         spacing={10}
         direction='column'
         alignItems='flex-start'
+        className='date-input'
       >
         <DateRangePicker
           format='MMM dd, yyyy'
           onChange={handleDateRangeChange}
           value={selectedDateRange}
+          onClean={handleClearDate}
         />
       </Stack>
       <Cards data={memoDashboardData} />

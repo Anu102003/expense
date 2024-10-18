@@ -1,8 +1,9 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../store/store';
 import { loginApi, registerApi } from '../../service/auth';
+import { MessageContext } from '../../context';
 import {
   validateConfirmPassword,
   validateField,
@@ -24,6 +25,11 @@ import i18next from '../../i18next';
 import './authentication.scss';
 
 const Authentication = () => {
+  const messageContext = useContext(MessageContext);
+  if (!messageContext) {
+    throw new Error('MessageContext must be used within a MessageProvider');
+  }
+  const { triggerMessage } = messageContext;
   const { loading, error } = useSelector((state: RootState) => state.auth);
   const location = useLocation();
   const [login, setLogin] = useState(location.pathname !== REGISTER);
@@ -132,6 +138,7 @@ const Authentication = () => {
       ) {
         const payload = resultAction.payload as LoginResponse;
         if (payload.status === (login ? 200 : 201)) {
+          triggerMessage(true, payload.message);
           navigate(DASHBOARD);
         }
       } else {

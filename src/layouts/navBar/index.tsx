@@ -1,10 +1,11 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { AppDispatch } from '../../store/store';
 import { logoutApi } from '../../service/auth';
+import { MessageContext } from '../../context';
 import { imageConst } from '../../libs/constants/image';
 import { DASHBOARD, LOGIN, TRANSACTION } from '../../libs/constants/route';
 import i18next from 'i18next';
@@ -20,6 +21,11 @@ export const NavBar: React.FC<NavBarProps> = ({
   setNavPopup,
   setShowLoading,
 }) => {
+  const messageContext = useContext(MessageContext);
+  if (!messageContext) {
+    throw new Error('MessageContext must be used within a MessageProvider');
+  }
+  const { triggerMessage } = messageContext;
   const [dashboard, setDashboard] = useState({ cursor: false, point: false });
   const [transaction, setTransaction] = useState({
     cursor: false,
@@ -36,6 +42,7 @@ export const NavBar: React.FC<NavBarProps> = ({
       await new Promise((resolve) => setTimeout(resolve, 1000));
       const resultAction = await dispatch(logoutApi());
       if (logoutApi.fulfilled.match(resultAction)) {
+        triggerMessage(true,resultAction.payload)
         navigate(LOGIN);
       } else if (logoutApi.rejected.match(resultAction)) {
         console.error('Failed to fetch logout data:', resultAction.payload);

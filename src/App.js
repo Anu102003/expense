@@ -1,11 +1,20 @@
+import { useContext } from 'react';
+import { MessageContext } from './context';
 import { Router } from './routes';
+import MsgCard from './components/MsgCard';
 import './App.scss';
-import { MessageProvider } from './context';
 function App() {
+  const { showMessage, msgCardData } = useContext(MessageContext);
   return (
-    <MessageProvider>
+    <>
       <Router />
-    </MessageProvider>
+      {showMessage && (
+        <MsgCard
+          status={msgCardData.status}
+          message={msgCardData.message}
+        />
+      )}
+    </>
   );
 }
 

@@ -59,7 +59,9 @@ const AddExpense: React.FC<AddExpenseProps> = ({
             ? {
                 ...data,
                 [name]:
-                  name === 'payment_mode' || name === 'amount' || name === 'category'
+                  name === 'payment_mode' ||
+                  name === 'amount' ||
+                  name === 'category'
                     ? Number(value)
                     : value,
               }
@@ -83,9 +85,7 @@ const AddExpense: React.FC<AddExpenseProps> = ({
         data.amount !== 0 &&
         data.description !== ''
     );
-    if (
-      isValid
-    ) {
+    if (isValid) {
       setMsg(true);
       setMsgCardData((prev) => ({ ...prev, status: true, message: 'Added' }));
       setShowMessage(true);
@@ -140,7 +140,7 @@ const AddExpense: React.FC<AddExpenseProps> = ({
       {formData.map((data, index) => (
         <AddCard
           key={index}
-          handleChange={(e) => handleChange(index,e)}
+          handleChange={(e) => handleChange(index, e)}
           formData={data}
           dropDown={dropDown}
           setDropDown={setDropDown}

@@ -1,4 +1,3 @@
-import { useContext, useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Authentication from '../pages/Authentication';
 import Transaction from '../pages/User/Transaction';
@@ -12,29 +11,8 @@ import {
 } from '../libs/constants/route';
 import ErrorPage from '../pages/Error';
 import { UserLayout } from '../layouts/userLayout';
-import MsgCard from '../components/MsgCard';
-import { MessageContext } from '../context';
+
 export const Router = () => {
-  const messageContext = useContext(MessageContext);
-  if (!messageContext) {
-    throw new Error('MessageContext must be used within a MessageProvider');
-  }
-
-  const { showMessage, setShowMessage, msgCardData } = messageContext || {
-    showMessage: false,
-    setShowMessage: () => {},
-    msgCardData: { status: false, message: '' },
-  };
-  console.log(showMessage, msgCardData);
-  useEffect(() => {
-    if (setShowMessage) {
-      setShowMessage(true);
-      setTimeout(() => {
-        setShowMessage(false);
-      }, 1000);
-    }
-  }, [setShowMessage]);
-
   return (
     <BrowserRouter>
       <Routes>
@@ -68,12 +46,6 @@ export const Router = () => {
           element={<ErrorPage />}
         />
       </Routes>
-      {showMessage && (
-        <MsgCard
-          status={msgCardData.status}
-          message={msgCardData.message}
-        />
-      )}
     </BrowserRouter>
   );
 };

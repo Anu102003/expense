@@ -10,6 +10,7 @@ interface MessageContextType {
   setMsgCardData: React.Dispatch<
     React.SetStateAction<{ status: boolean; message: string }>
   >;
+  triggerMessage: (status: boolean, message: string) => void; // Add triggerMessage
 }
 
 interface MessageProviderProps {
@@ -20,7 +21,6 @@ export const MessageContext = createContext<MessageContextType | undefined>(
   undefined
 );
 
-// Create the provider component
 export const MessageProvider: React.FC<MessageProviderProps> = ({
   children,
 }) => {
@@ -30,9 +30,23 @@ export const MessageProvider: React.FC<MessageProviderProps> = ({
     message: '',
   });
 
+  const triggerMessage = (status: boolean, message: string) => {
+    setMsgCardData({ status, message });
+    setShowMessage(true);
+    setTimeout(() => {
+      setShowMessage(false);
+    }, 1000);
+  };
+
   return (
     <MessageContext.Provider
-      value={{ showMessage, setShowMessage, msgCardData, setMsgCardData }}
+      value={{
+        showMessage,
+        setShowMessage,
+        msgCardData,
+        setMsgCardData,
+        triggerMessage,
+      }}
     >
       {children}
     </MessageContext.Provider>
